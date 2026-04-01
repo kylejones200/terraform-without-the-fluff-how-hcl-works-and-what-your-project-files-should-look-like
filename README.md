@@ -1,13 +1,44 @@
-# Terraform Without the Fluff How HCL Works and What Your Project Files Should Look Like
+# Terraform Without the Fluff: How HCL Works and What Your Project Files Should Look Like
 
-**Published:** 2025-04-19
-**Medium:** [https://medium.com/@kyle-t-jones/terraform-without-the-fluff-how-hcl-works-and-what-your-project-files-should-look-like-7e400c3813d2](https://medium.com/@kyle-t-jones/terraform-without-the-fluff-how-hcl-works-and-what-your-project-files-should-look-like-7e400c3813d2)
+This project demonstrates Terraform HCL analysis and project structure validation.
 
-## About
+## Article
 
-Place the code for this article in this repository.
-The original article export is saved as `article.md`.
+Medium article: [Terraform Without the Fluff: How HCL Works and What Your Project Files Should Look Like](https://medium.com/@kylejones_47003/terraform-without-the-fluff-how-hcl-works-and-what-your-project-files-should-look-like-7e400c3813d2)
 
-## Files
+## Project Structure
 
-Add your `.ipynb`, `.py`, `.yaml`, `.js`, `.ts`, or other project files here.
+```
+.
+├── README.md           # This file
+├── main.py            # Main entry point
+├── config.yaml        # Configuration file
+├── requirements.txt   # Python dependencies
+├── src/               # Core functions
+│   ├── core.py        # Terraform analysis functions
+│   └── plotting.py    # Tufte-style plotting utilities
+├── tests/             # Unit tests
+├── data/              # Data files
+└── images/            # Generated plots and figures
+```
+
+## Configuration
+
+Edit `config.yaml` to customize:
+- Terraform project directory
+- Structure validation options
+- Output settings
+
+## Terraform HCL
+
+HCL (HashiCorp Configuration Language):
+- **Declarative syntax**: Describes desired state
+- **Blocks**: Resources, variables, outputs
+- **Project structure**: Organized file structure
+- **Best practices**: Standard patterns
+
+## Caveats
+
+- Analyzes Terraform file structure, not HCL syntax.
+- Validation checks for standard file names.
+- Full validation requires terraform validate command.
