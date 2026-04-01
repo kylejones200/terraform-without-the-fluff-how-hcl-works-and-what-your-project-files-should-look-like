@@ -33,7 +33,7 @@ def validate_terraform_structure(structure: Dict) -> Dict:
     }
 
 def plot_terraform_structure(structure: Dict, validation: Dict, title: str, output_path: Path):
- """Plot Terraform structure analysis """
+    """Plot Terraform structure analysis """
     fig, ax = plt.subplots(figsize=(10, 6))
     
     categories = ['Total Files', 'Variable Files', 'Has Main', 'Has Variables', 'Has Outputs']
