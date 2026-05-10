@@ -32,25 +32,26 @@ def validate_terraform_structure(structure: Dict) -> Dict:
         'is_valid': all(req in found_files for req in required_files)
     }
 
-def plot_terraform_structure(structure: Dict, validation: Dict, title: str, output_path: Path):
+def plot_terraform_structure(structure: Dict, validation: Dict, title: str, output_path: Path, plot: bool = False):
     """Plot Terraform structure analysis """
-    fig, ax = plt.subplots(figsize=(10, 6))
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 6))
     
-    categories = ['Total Files', 'Variable Files', 'Has Main', 'Has Variables', 'Has Outputs']
-    values = [
-        structure['total_files'],
-        structure['variable_files'],
-        1 if validation['has_main'] else 0,
-        1 if validation['has_variables'] else 0,
-        1 if validation['has_outputs'] else 0
-    ]
+        categories = ['Total Files', 'Variable Files', 'Has Main', 'Has Variables', 'Has Outputs']
+        values = [
+            structure['total_files'],
+            structure['variable_files'],
+            1 if validation['has_main'] else 0,
+            1 if validation['has_variables'] else 0,
+            1 if validation['has_outputs'] else 0
+        ]
     
-    colors = ["#4A90A4" if v > 0 else "#D4A574" for v in values]
-    ax.bar(categories, values, color=colors, alpha=0.7, edgecolor='none')
+        colors = ["#4A90A4" if v > 0 else "#D4A574" for v in values]
+        ax.bar(categories, values, color=colors, alpha=0.7, edgecolor='none')
     
-    ax.set_ylabel("Count")
-    ax.set_xticklabels(categories, rotation=45, ha='right')
+        ax.set_ylabel("Count")
+        ax.set_xticklabels(categories, rotation=45, ha='right')
     
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
 
