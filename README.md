@@ -32,10 +32,10 @@ Edit `config.yaml` to customize:
 ## Terraform HCL
 
 HCL (HashiCorp Configuration Language):
-- **Declarative syntax**: Describes desired state
-- **Blocks**: Resources, variables, outputs
-- **Project structure**: Organized file structure
-- **Best practices**: Standard patterns
+- Declarative syntax: Describes desired state
+- Blocks: Resources, variables, outputs
+- Project structure: Organized file structure
+- Best practices: Standard patterns
 
 ## Caveats
 

@@ -39,12 +39,12 @@ project-root/
 
 Each of these files plays a distinct role. Keep them separate, and you keep your sanity.
 
-- **`main.tf`** is your blueprint. This is where your actual infrastructure lives. Want to spin up an EC2 instance, configure a VPC, or define a security group? It all happens here.
-- **`variables.tf`** declares your inputs. Instead of hardcoding values, you define what should be configurable---region, instance type, environment, you name it.
-- **`outputs.tf`** makes values available after Terraform runs. That might be the public IP of an instance, an ARN, or a database connection string you need downstream.
-- **`terraform.tfvars`** is where you set the actual values for your variables. It keeps your config clean and reusable.
-- **`backend.tf`** defines how and where Terraform stores state---whether that's a local file or an S3 bucket for team use.
-- **`modules/`** is where you start thinking like a software engineer. Modularize your code. Keep reusable pieces (like networking, compute, or IAM roles) in their own folders so you can plug them into multiple projects without rewriting anything.
+- `main.tf` is your blueprint. This is where your actual infrastructure lives. Want to spin up an EC2 instance, configure a VPC, or define a security group? It all happens here.
+- `variables.tf` declares your inputs. Instead of hardcoding values, you define what should be configurable---region, instance type, environment, you name it.
+- `outputs.tf` makes values available after Terraform runs. That might be the public IP of an instance, an ARN, or a database connection string you need downstream.
+- `terraform.tfvars` is where you set the actual values for your variables. It keeps your config clean and reusable.
+- `backend.tf` defines how and where Terraform stores state---whether that's a local file or an S3 bucket for team use.
+- `modules/` is where you start thinking like a software engineer. Modularize your code. Keep reusable pieces (like networking, compute, or IAM roles) in their own folders so you can plug them into multiple projects without rewriting anything.
 
 ### Why This Structure Matters
 Terraform's flexibility is a double-edged sword. It lets you do almost anything, but that freedom can quickly turn into chaos if you don't impose some discipline. This file structure enforces a contract. It helps you separate logic, inputs, outputs, and state so that the project remains readable, testable, and maintainable.
