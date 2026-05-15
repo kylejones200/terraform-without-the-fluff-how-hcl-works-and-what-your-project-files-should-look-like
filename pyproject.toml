@@ -1,0 +1,9 @@
+[project]
+name = "terraform-without-the-fluff-how-hcl-works"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "pytest>=9.0.3",
+    "pyyaml>=6.0.3",
+]
