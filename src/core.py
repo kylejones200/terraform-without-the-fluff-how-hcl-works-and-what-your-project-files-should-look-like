@@ -1,15 +1,13 @@
 """Core functions for Terraform HCL analysis."""
 
-import json
 from pathlib import Path
-from typing import Dict
 import matplotlib.pyplot as plt
 import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
-def analyze_terraform_structure(terraform_dir: Path) -> Dict:
+def analyze_terraform_structure(terraform_dir: Path) -> dict:
     """Analyze Terraform project structure."""
     files = list(terraform_dir.glob('*.tf'))
     vars_files = list(terraform_dir.glob('*.tfvars'))
@@ -20,7 +18,7 @@ def analyze_terraform_structure(terraform_dir: Path) -> Dict:
         'file_names': [f.name for f in files]
     }
 
-def validate_terraform_structure(structure: Dict) -> Dict:
+def validate_terraform_structure(structure: dict) -> dict:
     """Validate Terraform project structure."""
     required_files = ['main.tf', 'variables.tf', 'outputs.tf']
     found_files = structure['file_names']
@@ -32,7 +30,7 @@ def validate_terraform_structure(structure: Dict) -> Dict:
         'is_valid': all(req in found_files for req in required_files)
     }
 
-def plot_terraform_structure(structure: Dict, validation: Dict, title: str, output_path: Path, plot: bool = False):
+def plot_terraform_structure(structure: dict, validation: dict, title: str, output_path: Path, plot: bool = False):
     """Plot Terraform structure analysis """
     if plot:
         fig, ax = plt.subplots(figsize=(10, 6))

@@ -16,7 +16,7 @@ def load_config(config_path: Path = None) -> dict:
     if config_path is None:
         config_path = Path(__file__).parent / 'config.yaml'
     
-    with open(config_path, 'r') as f:
+    with open(config_path) as f:
         return yaml.safe_load(f)
 
 def main():
@@ -35,14 +35,14 @@ def main():
     logging.info(f"Analyzing Terraform project structure in {terraform_dir}...")
     structure = analyze_terraform_structure(terraform_dir)
     
-    logging.info(f"\nTerraform Structure:")
+    logging.info("\nTerraform Structure:")
     logging.info(f"Total .tf files: {structure['total_files']}")
     logging.info(f"Variable files: {structure['variable_files']}")
     logging.info(f"Files found: {', '.join(structure['file_names'])}")
     
     if config['terraform']['validate_structure']:
         validation = validate_terraform_structure(structure)
-        logging.info(f"\nStructure Validation:")
+        logging.info("\nStructure Validation:")
         logging.info(f"Has main.tf: {validation['has_main']}")
         logging.info(f"Has variables.tf: {validation['has_variables']}")
         logging.info(f"Has outputs.tf: {validation['has_outputs']}")
