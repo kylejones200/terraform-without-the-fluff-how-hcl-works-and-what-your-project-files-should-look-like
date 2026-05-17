@@ -42,3 +42,11 @@ HCL (HashiCorp Configuration Language):
 - Analyzes Terraform file structure, not HCL syntax.
 - Validation checks for standard file names.
 - Full validation requires terraform validate command.
+
+## Disclaimer
+
+Educational/demo code only. Not financial, safety, or engineering advice. Use at your own risk. Verify results independently before any production or operational use.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

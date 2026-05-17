@@ -38,29 +38,31 @@ def plot_terraform_structure(
     structure: dict, validation: dict, title: str, output_path: Path, plot: bool = False
 ):
     """Plot Terraform structure analysis"""
-    if plot:
-        fig, ax = plt.subplots(figsize=(10, 6))
+    if not plot:
+        return
 
-        categories = [
-            "Total Files",
-            "Variable Files",
-            "Has Main",
-            "Has Variables",
-            "Has Outputs",
-        ]
-        values = [
-            structure["total_files"],
-            structure["variable_files"],
-            1 if validation["has_main"] else 0,
-            1 if validation["has_variables"] else 0,
-            1 if validation["has_outputs"] else 0,
-        ]
+    fig, ax = plt.subplots(figsize=(10, 6))
 
-        colors = ["#4A90A4" if v > 0 else "#D4A574" for v in values]
-        ax.bar(categories, values, color=colors, alpha=0.7, edgecolor="none")
+    categories = [
+        "Total Files",
+        "Variable Files",
+        "Has Main",
+        "Has Variables",
+        "Has Outputs",
+    ]
+    values = [
+        structure["total_files"],
+        structure["variable_files"],
+        1 if validation["has_main"] else 0,
+        1 if validation["has_variables"] else 0,
+        1 if validation["has_outputs"] else 0,
+    ]
 
-        ax.set_ylabel("Count")
-        ax.set_xticklabels(categories, rotation=45, ha="right")
+    colors = ["#4A90A4" if v > 0 else "#D4A574" for v in values]
+    ax.bar(categories, values, color=colors, alpha=0.7, edgecolor="none")
 
-        plt.savefig(output_path, dpi=100, bbox_inches="tight")
-        plt.close()
+    ax.set_ylabel("Count")
+    ax.set_xticklabels(categories, rotation=45, ha="right")
+
+    plt.savefig(output_path, dpi=100, bbox_inches="tight")
+    plt.close()
