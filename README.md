@@ -2,6 +2,14 @@
 
 This project demonstrates Terraform HCL analysis and project structure validation.
 
+## Business context
+
+Most people are surprised the first time they read a Terraform file. It looks like JSON --- but cleaner. That's because Terraform uses HCL2, the HashiCorp Configuration Language. It's a purpose-built syntax designed for human readability without giving up structure.
+
+Let's start with something familiar. Here's what it looks like to launch a simple EC2 instance:
+
+No semicolons. No deep nesting. Just a resource block, a name, and some attributes.
+
 ## Article
 
 Medium article: [Terraform Without the Fluff: How HCL Works and What Your Project Files Should Look Like](https://medium.com/@kylejones_47003/terraform-without-the-fluff-how-hcl-works-and-what-your-project-files-should-look-like-7e400c3813d2)
