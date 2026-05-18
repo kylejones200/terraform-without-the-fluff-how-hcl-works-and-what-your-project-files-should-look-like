@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path | None = None) -> dict:
     """Load configuration from YAML file."""
     if config_path is None:
         config_path = Path(__file__).parent / "config.yaml"
@@ -35,7 +35,6 @@ def main():
         "--output-dir", type=Path, default=None, help="Output directory"
     )
     args = parser.parse_args()
-
     config = load_config(args.config)
     output_dir = (
         Path(args.output_dir)
@@ -43,21 +42,17 @@ def main():
         else Path(config["output"]["figures_dir"])
     )
     output_dir.mkdir(exist_ok=True)
-
     terraform_dir = (
         Path(args.terraform_dir)
         if args.terraform_dir
         else Path(config["terraform"]["project_dir"])
     )
-
     logging.info(f"Analyzing Terraform project structure in {terraform_dir}...")
     structure = analyze_terraform_structure(terraform_dir)
-
     logging.info("\nTerraform Structure:")
     logging.info(f"Total .tf files: {structure['total_files']}")
     logging.info(f"Variable files: {structure['variable_files']}")
     logging.info(f"Files found: {', '.join(structure['file_names'])}")
-
     if config["terraform"]["validate_structure"]:
         validation = validate_terraform_structure(structure)
         logging.info("\nStructure Validation:")
@@ -65,7 +60,6 @@ def main():
         logging.info(f"Has variables.tf: {validation['has_variables']}")
         logging.info(f"Has outputs.tf: {validation['has_outputs']}")
         logging.info(f"Valid structure: {validation['is_valid']}")
-
         if not validation["is_valid"]:
             plot_terraform_structure(
                 structure,
